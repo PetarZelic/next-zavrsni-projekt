@@ -6,11 +6,10 @@ import { notFound } from "next/navigation";
 
 export const dynamic = 'force-dynamic';
 
-type Params = {
-  params: { number: string };
-};
 
-export default async function Show({ params }: Params) {
+
+export default async function Show({ params }: { params: { number: string } }) {
+
   const id = parseInt(params.number, 10);
   //dohvat serije s id-jem
   const res = await fetch(`https://api.tvmaze.com/shows/${id}`);

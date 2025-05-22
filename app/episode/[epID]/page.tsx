@@ -5,13 +5,10 @@ import notFound from "@/app/NotFound";
 import FavoriteButton from "@/app/components/FavoriteButton";
 
 
-type Params = {
-    params: {
-        epID: string;
-    };
-};
 
-export default async function EpisodeInfo({ params }: Params) {
+
+export default async function EpisodeInfo({ params }: { params: { epID: string } }) {
+
     const epID = params.epID;
     //dohvat episode
     const epRes = await fetch(`https://api.tvmaze.com/episodes/${epID}`);
