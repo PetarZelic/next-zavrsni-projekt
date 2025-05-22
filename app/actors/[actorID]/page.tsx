@@ -1,15 +1,10 @@
 import Image from "next/image";
 import fetchAllCastCredits from "@/app/components/fetchAllCastCredits";
 import FavoriteButton from "@/app/components/FavoriteButton";
-type Params = {
-  params: {
-    actorID: string;
-  };
-};
+
 type Actor = { id: number; name: string; image?: { medium: string }; birthday?: string; country?: { name: string } };
 
-
-export default async function ActorPage({ params }: Params) {
+export default async function ActorPage({ params }: { params: { actorID: string } }) {
   const actorID = params.actorID;
 //dohvat glumaca
   let actor: Actor;
