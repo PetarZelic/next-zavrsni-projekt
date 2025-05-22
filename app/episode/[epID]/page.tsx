@@ -7,10 +7,10 @@ import FavoriteButton from "@/app/components/FavoriteButton";
 
 
 
-export default async function EpisodeInfo(props: { params: Promise<{ epID: string }> }) {
-    const params = await props.params;
-
+export default async function EpisodeInfo({ params }: { params: { epID: string } }) {
     const epID = params.epID;
+
+
     //dohvat episode
     const epRes = await fetch(`https://api.tvmaze.com/episodes/${epID}`);
     if (!epRes.ok) {
@@ -70,16 +70,16 @@ export default async function EpisodeInfo(props: { params: Promise<{ epID: strin
                     dangerouslySetInnerHTML={{ __html: episode.summary }}
                 />
                 <div><FavoriteButton
-                item={{
-                    id: episode.id,
-                    name: episode.name,
-                    image: episode.image,
-                    type: "episode",
-                }}
-            />
+                    item={{
+                        id: episode.id,
+                        name: episode.name,
+                        image: episode.image,
+                        type: "episode",
+                    }}
+                />
+                </div>
             </div>
-            </div>
-            
+
 
             {/* Cast Info */}
             <div className="mt-8">
@@ -95,7 +95,7 @@ export default async function EpisodeInfo(props: { params: Promise<{ epID: strin
                                 className="flex flex-col items-center text-center border p-4  shadow hover:shadow-md transition"
                             >
                                 <Image
-                                    src={actor.person.image?.medium }
+                                    src={actor.person.image?.medium}
                                     width={150}
                                     height={150}
                                     alt={actor.person.name}

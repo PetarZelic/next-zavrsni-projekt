@@ -7,10 +7,7 @@ import { notFound } from "next/navigation";
 export const dynamic = 'force-dynamic';
 
 
-
-export default async function Show(props: { params: Promise<{ number: string }> }) {
-  const params = await props.params;
-
+export default async function Show({ params }: { params: { number: string } }) {
   const id = parseInt(params.number, 10);
   //dohvat serije s id-jem
   const res = await fetch(`https://api.tvmaze.com/shows/${id}`);

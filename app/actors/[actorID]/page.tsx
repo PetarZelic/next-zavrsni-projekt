@@ -10,8 +10,9 @@ type Params = {
   };
 };
 
-export default async function ActorPage({ params }: Params) {
+export default async function ActorPage({ params }: { params: { actorID: string } }) {
   const actorID = params.actorID;
+
   
 
 //dohvat glumaca
