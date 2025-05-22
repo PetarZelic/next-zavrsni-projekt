@@ -6,11 +6,13 @@ type Params = {
     actorID: string;
   };
 };
+type Actor = { id: number; name: string; image?: { medium: string }; birthday?: string; country?: { name: string } };
+
 
 export default async function ActorPage({ params }: Params) {
   const actorID = params.actorID;
 //dohvat glumaca
-  let actor;
+  let actor: Actor;
   try {
     const actorRes = await fetch(`https://api.tvmaze.com/people/${actorID}`);
     if (!actorRes.ok) throw new Error("Neuspješan fetch glumca");
