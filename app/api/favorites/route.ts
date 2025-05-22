@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
 export async function GET() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const favs = cookieStore.get('favorites')?.value;
   return NextResponse.json(favs ? JSON.parse(favs) : []);
 }
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Missing id or type' }, { status: 400 });
   }
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const favs = cookieStore.get('favorites')?.value;
   const parsed = favs ? JSON.parse(favs) : [];
 
@@ -36,7 +36,7 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ error: 'Missing id or type' }, { status: 400 });
   }
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const favs = cookieStore.get('favorites')?.value;
   const parsed = favs ? JSON.parse(favs) : [];
 

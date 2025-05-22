@@ -4,8 +4,16 @@ import FavoriteButton from "@/app/components/FavoriteButton";
 
 type Actor = { id: number; name: string; image?: { medium: string }; birthday?: string; country?: { name: string } };
 
-export default async function ActorPage({ params }: { params: { actorID: string } }) {
+type Params = {
+  params: {
+    actorID: string;
+  };
+};
+
+export default async function ActorPage({ params }: Params) {
   const actorID = params.actorID;
+  
+
 //dohvat glumaca
   let actor: Actor;
   try {

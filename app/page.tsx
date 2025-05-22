@@ -1,8 +1,10 @@
 import { Suspense } from 'react';
 import ShowList from './components/ShowList';
 
-export default function Page({ searchParams }: { searchParams: { page?: string } }) {
+export default async function Page({ searchParams }: { searchParams: { page?: string } }) {
   const page = parseInt(searchParams.page || '1');
+ 
+
 
   return (
     <div className="p-6">

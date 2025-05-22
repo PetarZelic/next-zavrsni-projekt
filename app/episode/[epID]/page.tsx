@@ -7,7 +7,8 @@ import FavoriteButton from "@/app/components/FavoriteButton";
 
 
 
-export default async function EpisodeInfo({ params }: { params: { epID: string } }) {
+export default async function EpisodeInfo(props: { params: Promise<{ epID: string }> }) {
+    const params = await props.params;
 
     const epID = params.epID;
     //dohvat episode

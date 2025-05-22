@@ -8,7 +8,8 @@ export const dynamic = 'force-dynamic';
 
 
 
-export default async function Show({ params }: { params: { number: string } }) {
+export default async function Show(props: { params: Promise<{ number: string }> }) {
+  const params = await props.params;
 
   const id = parseInt(params.number, 10);
   //dohvat serije s id-jem
@@ -16,7 +17,7 @@ export default async function Show({ params }: { params: { number: string } }) {
   if (!res.ok) notFound();
   const show = await res.json();
   if (!show?.id) notFound();
-//dohvat glumaca te serije
+  //dohvat glumaca te serije
   const castRes = await fetch(`https://api.tvmaze.com/shows/${id}/cast`);
   const cast = await castRes.json();
 
