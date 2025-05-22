@@ -5,7 +5,7 @@ type FavoriteItem = {
   id: number;
   name: string;
   image?: { medium?: string };
-  type: "show" | "episode" | "actor";
+  type: 'show' | 'episode' | 'actor';
 };
 
 type Props = {

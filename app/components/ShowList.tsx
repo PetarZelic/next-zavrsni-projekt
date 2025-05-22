@@ -34,7 +34,7 @@ export default function ShowList({ page }: { page: number }) {
     //dohvacanje serija
     const fetchShows = async () => {
       const data = await fetchAllShows(10);
-      let sorted = [...data];
+      const sorted = [...data];
 
       //sortiranje po abc
       if (sortOrder === 'asc' || sortOrder === 'desc') {
@@ -146,7 +146,7 @@ export default function ShowList({ page }: { page: number }) {
               )}
               <h3 className='text-2xl font-bold'>{searchedResult.name}</h3>
             </Link>
-            <FavoriteButton show={{ id: searchedResult.id, name: searchedResult.name, image: searchedResult.image }} />
+            <FavoriteButton item={{ id: searchedResult.id, name: searchedResult.name, image: searchedResult.image,type:"show" }} />
           </li>
         </ul>
       ) : (
@@ -169,7 +169,7 @@ export default function ShowList({ page }: { page: number }) {
                 )}
                 <h3>{show.name}</h3>
               </Link>
-              <FavoriteButton show={{ id: show.id, name: show.name, image: show.image }} />
+              <FavoriteButton item={{ id: show.id, name: show.name, image: show.image ,type:"show"}} />
             </li>
           ))}
 
